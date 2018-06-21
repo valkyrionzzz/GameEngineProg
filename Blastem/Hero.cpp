@@ -3,6 +3,18 @@
 
 Hero::Hero()
 {
+	bumpIntoSolids = true;
+	solid = true;
+	collisionBox.w = 75;
+	collisionBox.h = 75;
+	hp = 100;
+	idle = false;
+	canTakeDmg = true;
+	gravity = 200;
+	deathSound = false;
+	coins = 0;
+	//knockbackX = 100;
+	//knockbackY = 250;
 }
 
 
@@ -24,15 +36,29 @@ void Hero::update(float dt){
 		faceRight = false;
 	}
 
-	//check if idle
+	//check if idle //might not need
 	if (velocity.x == 0) {
 		this->state = "idle";
 	}
 
-	//use basic entity movement to move around
+	if (hp <= 0) {
+		system("cls");
+		cout << "dead" << endl;
+		if (deathSound == false) {
+			SoundManager::soundManager.playSound("heroDeath");
+			deathSound = true;
+			velocity.y = 200;
+			bumpIntoSolids = false;
+		}
+	}
+
+	if (hp > 0) {
+		applyGravity(dt);
+	}
+	updateCollisions(dt);
+
 	updateMovement(dt);
 
-	//update animations too
 	animation->update(dt);
 }
 void Hero::draw(){
@@ -41,5 +67,14 @@ void Hero::draw(){
 			animation->draw(pos.x, pos.y);
 		else
 			animation->draw(pos.x, pos.y, true);
+	}
+}
+void Hero::applyGravity(float dt) {
+	if (pos.y < 440) {
+		velocity.y += gravity * dt;
+	}
+	if (pos.y > 450) {
+		pos.y = 450;
+		velocity.y = 0;
 	}
 }

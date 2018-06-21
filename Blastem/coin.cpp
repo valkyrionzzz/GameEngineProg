@@ -3,6 +3,13 @@
 
 coin::coin()
 {
+	bumpIntoSolids = true;
+	solid = true;
+	collisionBox.w = 1;
+	collisionBox.h = 1;
+	dmg = 0;
+
+	type = "coin";
 }
 
 
@@ -15,11 +22,14 @@ void coin::setAnimation(Animation* animation) {
 }
 
 void coin::update(float dt) {
+
+	updateCollisionBox();
+	updateMovement(dt);
 	animation->update(dt);
 }
 
 void coin::draw() {
-	if (animation != NULL) {
+	if (animation != NULL && poof == false) {
 		animation->draw(pos.x, pos.y, true);
 	}
 }

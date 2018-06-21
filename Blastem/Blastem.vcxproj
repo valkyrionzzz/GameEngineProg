@@ -41,8 +41,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>K:\_AIT\GameEngine\Setup Project\sdl2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>K:\_AIT\GameEngine\Setup Project\sdl2\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\ShivM\Downloads\GOODSTUFF\Blastem\sdl2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\ShivM\Downloads\GOODSTUFF\Blastem\sdl2\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -52,7 +52,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -79,7 +79,12 @@
     <ClCompile Include="KeyboardHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MouseHandler.cpp" />
+    <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="Platform2.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="Spikes.cpp" />
     <ClCompile Include="Vector.cpp" />
+    <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -89,7 +94,12 @@
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="KeyboardHandler.h" />
     <ClInclude Include="MouseHandler.h" />
+    <ClInclude Include="Platform.h" />
+    <ClInclude Include="Platform2.h" />
+    <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="Spikes.h" />
     <ClInclude Include="Vector.h" />
+    <ClInclude Include="Wall.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
